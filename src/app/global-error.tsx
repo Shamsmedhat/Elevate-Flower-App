@@ -1,9 +1,11 @@
 "use client";
 
+// Page props type
 type GlobalErrorProps = {
   error: Error;
   reset: () => void;
 };
+
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   return (
     <html>

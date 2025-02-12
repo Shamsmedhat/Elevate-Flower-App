@@ -1,4 +1,6 @@
 {
-  "home": "Home",
-  "allcategories": "AllCategories"
+  "home": "home",
+  "all-categories": "all categories",
+  "about": "about",
+  "contact": "contact"
 }
