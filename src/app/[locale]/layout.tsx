@@ -36,7 +36,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Loc
 
   return (
     <html lang={locale}>
-      <body className={poppins.className}>
+      <body className={poppins.className} dir={locale === "ar" ? "rtl" : "ltr"}>
         <Providers>
           <Header />
           <main>{children}</main>

@@ -3,8 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
+    signIn: "/",
   },
 
   providers: [
@@ -22,4 +21,4 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-}
+};

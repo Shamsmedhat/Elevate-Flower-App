@@ -50,6 +50,9 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        main: {
+          light: "#FEEDF7",
+        },
         "custom-rose": {
           50: "#FEEAF6",
           100: "#FED5EE",
@@ -99,6 +102,7 @@ const config: Config = {
           900: "#39D8A3",
         },
       },
+
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

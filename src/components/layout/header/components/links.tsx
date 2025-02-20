@@ -1,7 +1,7 @@
 "use client";
 
 import { Link, usePathname } from "@/i18n/routing";
-import { cn } from "@/lib/utils/utils";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import React from "react";
 
@@ -16,7 +16,7 @@ export default function Links() {
   const isCurrentPath = (path: string) => pathname.startsWith(path);
 
   return (
-    <ul className="flex items-center justify-center gap-6 capitalize">
+    <ul className="flex items-center justify-center gap-6 capitalize rtl:flex-row">
       {/* Home */}
       <li>
         <Link

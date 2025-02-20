@@ -1,3 +1,4 @@
+import AuthDialog from "@/components/features/auth/auth-dialog";
 import Icons from "./components/icons";
 import Links from "./components/links";
 import Logo from "./components/logo";
@@ -5,7 +6,7 @@ import Logo from "./components/logo";
 export default function Header() {
   return (
     <header>
-      <nav className="flex items-center justify-around py-3">
+      <nav className="flex items-center justify-around py-3 rtl:flex-row">
         {/* Logo */}
         <div>
           <Logo />
@@ -17,8 +18,13 @@ export default function Header() {
         </div>
 
         {/* Icons */}
-        <div className="text-custom-rose-900 flex gap-5">
+        <div className="flex gap-5 text-custom-rose-900">
           <Icons />
+        </div>
+
+        {/* Login */}
+        <div>
+          <AuthDialog />
         </div>
       </nav>
     </header>
