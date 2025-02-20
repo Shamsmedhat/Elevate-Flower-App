@@ -1,4 +1,16 @@
 {
-  "home": "بيت",
-  "allcategories": "كل الفئات"
+  "all-categories": "جميع الفئات",
+  "about": "عن",
+  "contact": "اتصال",
+  "categories-count": "{count, plural, =0 {لا يوجد منتجات} =1 {منتج واحد} other {# منتج}}.",
+  "home": "الصفحة الرئيسية",
+  "email": "بريد إلكتروني",
+  "password": "كلمة المرور",
+  "login-to-your-account": "تسجيل الدخول إلى حسابك",
+  "create-account": "إنشاء حساب",
+  "forgot-password": "هل نسيت كلمة السر",
+  "no-account": "لا حساب؟",
+  "create-one-here": "إنشاء واحدة هنا",
+  "submit": "يُقدِّم",
+  "login": "تسجيل الدخول"
 }
