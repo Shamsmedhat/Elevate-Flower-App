@@ -7,15 +7,26 @@ declare module "next-auth" {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
-    user: {
-      /** The user's postal address. */
-      address: string;
-    };
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: "male" | "female";
+    phone: string;
+    photo?: string;
+    role: string;
   }
 
-  interface User {
-    message: string;
+  interface User extends Pick<DataBaseFields, "createdAt"> {
     token: string;
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: "male" | "female";
+    phone: string;
+    photo?: string;
+    role: string;
   }
 }
 
@@ -23,6 +34,14 @@ declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
     /** OpenID ID Token */
-    idToken?: string;
+    _id: string;
+    token: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: "male" | "female";
+    phone: string;
+    photo?: string;
+    role: string;
   }
 }

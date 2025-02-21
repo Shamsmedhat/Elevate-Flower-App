@@ -8,6 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ChangeAuthForm } from "@/lib/constants/auth-form.constant";
+import { useSession } from "next-auth/react";
 // import { ChangeFormType } from "@/lib/types/auth-form";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -39,30 +41,25 @@ export default function AuthDialog() {
   const t = useTranslations();
 
   // State
-  const [formName, setFormName] = useState<
-    "login" | "register" | "forgot-password" | "verify-otp" | "set-password"
-  >("login"); // login, register, forgot-password, verify-otp & set-password.
-  // const [open, setOpen] = useState(false);
+  const [formName, setFormName] = useState<ChangeAuthForm>(ChangeAuthForm.LOGIN); // login, register, forgot-password, verify-otp & set-password.
+  const [open, setOpen] = useState(false);
 
   // Functions
-  function changeForm(
-    formName: "login" | "register" | "forgot-password" | "verify-otp" | "set-password",
-  ) {
+  function changeForm(formName: ChangeAuthForm) {
     setFormName(formName);
   }
 
-  // function closeDialog(open: boolean) {
-  //   setOpen(!open);
+  function closeDialog(open: boolean) {
+    setOpen(!open);
 
-  //   // Prevent showing the login form before dialog fully close immediately
-  //   setTimeout(() => {
-  //     setFormName(ChangeFormType.LOGIN);
-  //   }, 500);
-  // }
+    // Prevent showing the login form before dialog fully close immediately
+    setTimeout(() => {
+      setFormName(ChangeAuthForm.LOGIN);
+    }, 500);
+  }
 
-  // onOpenChange={(open) => closeDialog(open)} defaultOpen={open}
   return (
-    <Dialog>
+    <Dialog onOpenChange={(open) => closeDialog(open)} defaultOpen={open}>
       {/* Login button */}
       <DialogTrigger asChild>
         <Button variant="default" className="rounded-3xl capitalize">

@@ -16,14 +16,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useTranslations } from "next-intl";
-import { LuEye } from "react-icons/lu";
-// import { LuEyeOff } from "react-icons/lu";
+import { ChangeAuthForm } from "@/lib/constants/auth-form.constant";
+import { signIn } from "next-auth/react";
 
 // Type
 type LoginFormProps = {
-  changeForm: (
-    formName: "login" | "register" | "forgot-password" | "verify-otp" | "set-password",
-  ) => void;
+  changeForm: (formName: ChangeAuthForm) => void;
 };
 
 export default function LoginForm({ changeForm }: LoginFormProps) {
@@ -47,9 +45,18 @@ export default function LoginForm({ changeForm }: LoginFormProps) {
   });
 
   // Function
-  function onSubmit(values: z.infer<typeof LoginFormSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof LoginFormSchema>) => {
+    console.log("values", values);
+
+    const response = await signIn("credentials", {
+      ...values,
+      redirect: false,
+    });
+
+    if (response?.ok) window.location.href = "/";
+
+    console.log("response", response);
+  };
 
   return (
     <>
@@ -91,21 +98,21 @@ export default function LoginForm({ changeForm }: LoginFormProps) {
                     className="rounded-xl capitalize"
                     {...field}
                   />
-                  <LuEye />
+                  {/* //TODO eye icon */}
                 </FormControl>
-
                 {/* Message */}
                 <FormMessage />
               </FormItem>
             )}
           />
+
           <DialogFooter>
             <div className="flex w-full flex-col">
               {/* Forgot password */}
               <div className="flex justify-end">
                 <button
                   className="mt-3 border-none bg-transparent text-xs capitalize text-custom-rose-900 underline"
-                  onClick={() => changeForm("forgot-password")}
+                  onClick={() => changeForm(ChangeAuthForm.FORGOT_PASSWORD)}
                 >
                   {t("forgot-password")}
                 </button>
@@ -116,7 +123,7 @@ export default function LoginForm({ changeForm }: LoginFormProps) {
                   <span>{t("no-account")}</span>
                   <button
                     className="my-3 border-none bg-transparent capitalize text-custom-rose-900 underline"
-                    onClick={() => changeForm("register")}
+                    onClick={() => changeForm(ChangeAuthForm.REGISTER)}
                   >
                     {t("create-one-here")}
                   </button>
